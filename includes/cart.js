@@ -18,10 +18,10 @@ $(document).ready(function () {
     //an api call to get a map so the user knows where they can take their gear
     $.ajax({
         type: "GET",
-        url: "https://maps.googleapis.com/maps/api/staticmap?center=" + userInfo['userCity'] + "," + userInfo['userReg'] + "&zoom=11&size=400x400&maptype=roadmap&key=AIzaSyDidt8ZdVqW8g5_uYu6wC9D8jPWi-2-v8Y",
+        url: "https://maps.googleapis.com/maps/api/staticmap?center=" + userInfo['userCity'] + "," + userInfo['userReg'] + "&zoom=10&size=400x400&maptype=roadmap&key=AIzaSyDidt8ZdVqW8g5_uYu6wC9D8jPWi-2-v8Y",
         success: function () {
             //I havent found a way to convert data into an image so i just  call it again
-            $("#map").attr('src', "https://maps.googleapis.com/maps/api/staticmap?center=" + userInfo['userCity'] + "," + userInfo['userReg'] + "&zoom=11&size=400x400&maptype=roadmap&key=AIzaSyDidt8ZdVqW8g5_uYu6wC9D8jPWi-2-v8Y");
+            $("#map").attr('src', "https://maps.googleapis.com/maps/api/staticmap?center=" + userInfo['userCity'] + "," + userInfo['userReg'] + "&zoom=10&size=400x400&maptype=roadmap&key=AIzaSyDidt8ZdVqW8g5_uYu6wC9D8jPWi-2-v8Y");
         }
     });
 
