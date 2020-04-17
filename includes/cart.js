@@ -76,7 +76,8 @@ $(document).ready(function () {
             localStorage.setItem('item-name', $("#item-name").text());
             localStorage.setItem('item-price', $('#currPrice').text());
             $(".item").remove();
-            $("#items").nextAll(':not(#checkout)').remove();
+            $(".alert").remove();
+            $("table").remove();
             localStorage.setItem('was-added', false);
             added = (localStorage.getItem('was-added') == 'true');
             final();
@@ -130,7 +131,9 @@ $(document).ready(function () {
     //thank you page inside of the cart
     function final() {
         //after checking out, allows the user to see the other packages and provides a "support email"
-        $("#in-cart").html(`<h1 class="display-3">Thank you!</h1><p class="lead">Your email has been recorded as ${userInfo['userEmail']}. You puchased ${localStorage.getItem('item-name')} for ${localStorage.getItem('item-price')}. We will email you with further details of your purchase</p><hr class="my-4"><p>If you have any inquiries or feedback, please feel free to email us at <u>thisisnotarealbusiness@notascam.com</u></p><p class="lead"><a class="btn btn-primary btn-lg" href="packages.html" role="button">All Packages</a></p>`);
+        $("#display-title").text("Thank you!")
+        $(".lead").prepend(`Your email has been recorded as ${userInfo['userEmail']}. You puchased ${localStorage.getItem('item-name')} for ${localStorage.getItem('item-price')}. We will email you with further details of your purchase</p>`);
+        $(".lead").append(`<hr class="my-4"><p>If you have any inquiries or feedback, please feel free to email us at <u>thisisnotarealbusiness@notascam.com</u></p><p class="lead"><a class="btn btn-primary btn-lg" href="packages.html" role="button">All Packages</a></p>`);
         //show widgets at the end
         $("#widgets").show();
     }
