@@ -13,38 +13,38 @@ $(document).ready(function () {
   //API to get customer location
   //assign variables for dereferencing
   var userInfo = 0;
-  var userLoc, userCity, userReg, userCn, userTZ, q2ans, q3ans;
+  var userLoc, q2ans, q3ans;
   var q4ans = [];
   let latLong = null;
   var packageOption = 0;
   //below is a list of packages offered on this website. All pckgs button appends all to sales zone and skips questions
   
   let waterPackageA =
-    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 30px;'><h3 class='card-header'>Water Package A</h3><div class='card-body'><h5 class='card-title'>The Kayak Pack</h5><h6 class='card-subtitle price-tag text-muted'>$249</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/kayak.png'alt='The Kayak'/><div class='card-body'><p class='card-text'>This sturdy green stud will take you wherever you can dream on water. With a roomy storage container in the back, be ready for a full trip with everything you'll need to dominate the wettest of waters.</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addWaterA' href='cart.html' role='button'style='margin: 10px 30px;'>Package A add to cart</a><div class='card-footer text-muted'>Good Value</div></div>";
+    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 5%;'><h3 class='card-header'>Water Package A</h3><div class='card-body'><h5 class='card-title'>The Kayak Pack</h5><h6 class='card-subtitle price-tag text-muted'>$249</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/kayak.png'alt='The Kayak'/><div class='card-body'><p class='card-text'>This sturdy green stud will take you wherever you can dream on water. With a roomy storage container in the back, be ready for a full trip with everything you'll need to dominate the wettest of waters.</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addWaterA' href='cart.html' role='button'style='margin: 10px 30px;'>Package A add to cart</a><div class='card-footer text-muted'>Good Value</div></div>";
   
     let waterPackageB =
-    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 30px;'><h3 class='card-header'>WaterPackage B</h3><div class='card-body'><h5 class='card-title'>The Booty Pack</h5><h6 class='card-subtitle price-tag text-muted'>$169</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/waterPackB.png'alt='The Booty Pack'/><div class='card-body'><p class='card-text'>This comfortable pfd and stylish water boots will keep you afloat in even the roughest waters. You can rely on the boots keeping you warm no matter how cold it is outside. And all for a great price!</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addWaterB' href='cart.html' role='button'style='margin: 10px 30px;'>Package B add to cart</a><div class='card-footer text-muted'>Great Value</div></div>";
+    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 5%;'><h3 class='card-header'>Water Package B</h3><div class='card-body'><h5 class='card-title'>The Booty Pack</h5><h6 class='card-subtitle price-tag text-muted'>$169</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/waterPackB.png'alt='The Booty Pack'/><div class='card-body'><p class='card-text'>This comfortable pfd and stylish water boots will keep you afloat in even the roughest waters. You can rely on the boots keeping you warm no matter how cold it is outside. And all for a great price!</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addWaterB' href='cart.html' role='button'style='margin: 10px 30px;'>Package B add to cart</a><div class='card-footer text-muted'>Great Value!</div></div>";
   
     let waterPackageC =
-    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 30px;'><h3 class='card-header'>Water Package C</h3><div class='card-body'><h5 class='card-title'>The Complete Water Pack</h5><h6 class='card-subtitle price-tag text-muted'>$389</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/waterPackC.png'alt='The Complete Water Pack'/><div class='card-body'><p class='card-text'>Enjoy the full set of water gear with this all-in-one water adventure pack. All at our best low price! <br><br><br></p></div><a class='btn btn-primary btn-lg add-to-cart' id='addWaterC' href='cart.html' role='button'style='margin: 10px 30px;'>Package C add to cart</a><div class='card-footer text-muted'>Best Value</div></div>";
+    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 5%;'><h3 class='card-header'>Water Package C</h3><div class='card-body'><h5 class='card-title'>The Complete Water Pack</h5><h6 class='card-subtitle price-tag text-muted'>$389</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/waterPackC.png'alt='The Complete Water Pack'/><div class='card-body'><p class='card-text'>Enjoy the full set of water gear with this all-in-one water adventure pack. All at our best low price! <br><br><br></p></div><a class='btn btn-primary btn-lg add-to-cart' id='addWaterC' href='cart.html' role='button'style='margin: 10px 30px;'>Package C add to cart</a><div class='card-footer text-muted'>Best Value!!</div></div>";
   
     let skiPackageA =
-    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 30px;'><h3 class='card-header'>Mountain Package A</h3><div class='card-body'><h5 class='card-title'>The Speedy Skiers Pack</h5><h6 class='card-subtitle price-tag text-muted'>$299</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/skis.png'alt='The Speedy Skiers Pack'/><div class='card-body'><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addSkiA' href='cart.html' role='button'style='margin: 10px 30px;'>Package A add to cart</a><div class='card-footer text-muted'>Good Value</div></div>";
+    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 5%;'><h3 class='card-header'>Mountain Package A</h3><div class='card-body'><h5 class='card-title'>The Speedy Skiers Pack</h5><h6 class='card-subtitle price-tag text-muted'>$299</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/skis.png'alt='The Speedy Skiers Pack'/><div class='card-body'><p class='card-text'>You'll be the fastest one on the slopes with these high performance downhill skis. Everyone on the slopes will wonder where you got the confidence you'll get with our skis. Poles are included!</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addSkiA' href='cart.html' role='button'style='margin: 10px 30px;'>Package A add to cart</a><div class='card-footer text-muted'>Good Value</div></div>";
   
     let skiPackageB =
-    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 30px;'><h3 class='card-header'>Mountain Package B</h3><div class='card-body'><h5 class='card-title'>The Mountain Style Pack</h5><h6 class='card-subtitle price-tag text-muted'>$299</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/skiPackB.png'alt='The Mountain Style Pack'/><div class='card-body'><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addSkiB' href='cart.html' role='button'style='margin: 10px 30px;'>Package B add to cart</a><div class='card-footer text-muted'>Great Value</div></div>";
+    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 5%;'><h3 class='card-header'>Mountain Package B</h3><div class='card-body'><h5 class='card-title'>The Mountain Style Pack</h5><h6 class='card-subtitle price-tag text-muted'>$299</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/skiPackB.png'alt='The Mountain Style Pack'/><div class='card-body'><p class='card-text'>Be the most stylish on the mountain with this weatherproof ski gear. You'll never get cold when you look this hot! All in this super breathable material that will make a snowman blush.</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addSkiB' href='cart.html' role='button'style='margin: 10px 30px;'>Package B add to cart</a><div class='card-footer text-muted'>Great Value!</div></div>";
   
     let skiPackageC =
-    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 30px;'><h3 class='card-header'>Mountain Package C</h3><div class='card-body'><h5 class='card-title'>The Complete Mountain Pack</h5><h6 class='card-subtitle price-tag text-muted'>$569</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/skiPackC.png'alt='The Complete Mountain Pack'/><div class='card-body'><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addSkiC' href='cart.html' role='button'style='margin: 10px 30px;'>Package C add to cart</a><div class='card-footer text-muted'>Best Value</div></div>";
+    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 5%;'><h3 class='card-header'>Mountain Package C</h3><div class='card-body'><h5 class='card-title'>The Complete Mountain Pack</h5><h6 class='card-subtitle price-tag text-muted'>$569</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/skiPackC.png'alt='The Complete Mountain Pack'/><div class='card-body'><p class='card-text'>Get style and performance with this full set of mountain gear. You'll never need to worry about missing out on a ski trip again!<br><br></p></div><a class='btn btn-primary btn-lg add-to-cart' id='addSkiC' href='cart.html' role='button'style='margin: 10px 30px;'>Package C add to cart</a><div class='card-footer text-muted'>Best Value!!</div></div>";
   
     let landPackageA =
-    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 30px;'><h3 class='card-header'>Adventure Package A</h3><div class='card-body'><h5 class='card-title'>The Camping Pack</h5><h6 class='card-subtitle price-tag text-muted'>$199</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/tent.png'alt='The Camping Pack'/><div class='card-body'><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addLandA' href='cart.html' role='button'style='margin: 10px 30px;'>Package A add to cart</a><div class='card-footer text-muted'>Good Value</div></div>";
+    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 5%;'><h3 class='card-header'>Adventure Package A</h3><div class='card-body'><h5 class='card-title'>The Camping Pack</h5><h6 class='card-subtitle price-tag text-muted'>$199</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/tent.png'alt='The Camping Pack'/><div class='card-body'><p class='card-text'>Light and Portable yet Tough and Spacious, this tent is everything you'll need to spend your time in the great outdoors! With notable features such as a classic design and revolutionary pitch-it-your-way technology!</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addLandA' href='cart.html' role='button'style='margin: 10px 30px;'>Package A add to cart</a><div class='card-footer text-muted'>Good Value</div></div>";
   
     let landPackageB =
-    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 30px;'><h3 class='card-header'>Adventure Package B</h3><div class='card-body'><h5 class='card-title'>The Hikers Pack</h5><h6 class='card-subtitle price-tag text-muted'>$99</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/landPackB.png'alt='The Hikers Pack'/><div class='card-body'><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addLandB' href='cart.html' role='button'style='margin: 10px 30px;'>Package B add to cart</a><div class='card-footer text-muted'>Great Value</div></div>";
+    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 5%;'><h3 class='card-header'>Adventure Package B</h3><div class='card-body'><h5 class='card-title'>The Hikers Pack</h5><h6 class='card-subtitle price-tag text-muted'>$99</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/landPackB.png'alt='The Hikers Pack'/><div class='card-body'><p class='card-text'>Looking for an excuse to go out and hit the trails? Look no further than our hikers pack! Some of the best storage/comfort technology has been worked into our products to ensure only the best trail hiking experiences!</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addLandB' href='cart.html' role='button'style='margin: 10px 30px;'>Package B add to cart</a><div class='card-footer text-muted'>Great Value!</div></div>";
   
     let landPackageC =
-    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 30px;'><h3 class='card-header'>Adventure Package C</h3><div class='card-body'><h5 class='card-title'>The Complete Adventure Pack</h5><h6 class='card-subtitle price-tag text-muted'>$269</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/landPackC.png'alt='The Complete Adventure Pack'/><div class='card-body'><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p></div><a class='btn btn-primary btn-lg add-to-cart' id='addLandC' href='cart.html' role='button'style='margin: 10px 30px;'>Package C add to cart</a><div class='card-footer text-muted'>Best Value</div></div>";
+    "<div class='card mb-3'style='max-width: 20rem; display: inline-block; margin: 10px 5%;'><h3 class='card-header'>Adventure Package C</h3><div class='card-body'><h5 class='card-title'>The Complete Adventure Pack</h5><h6 class='card-subtitle price-tag text-muted'>$269</h6></div><img style='height: 200px; width: 100%; display: block;'src='images/landPackC.png'alt='The Complete Adventure Pack'/><div class='card-body'><p class='card-text'>Head out on a true adventure with our Complete Adventure Pack. packed with everything you need to get out and go!<br><br> </p></div><a class='btn btn-primary btn-lg add-to-cart' id='addLandC' href='cart.html' role='button'style='margin: 10px 30px;'>Package C add to cart</a><div class='card-footer text-muted'>Best Value!!</div></div>";
   
     //For when the user identifies the gear they are missing based on expressed interest in packages
   let waterInterest = "<div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value='Kayak'>Kayak</label></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value='PFD'>PFD</label></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value='Booties'>Water Boots</label></div>"
@@ -57,31 +57,33 @@ $(document).ready(function () {
     type: "GET",
     url: "https://ipinfo.io/json",
     success: function (data) {
-      userInfo = data;
-      userLoc = data.loc;
-      userCity = data.city;
-      userReg = data.region;
-      userCn = data.country;
-      userTZ = data.timezone;
-      latLong = userLoc.split(",");
+      userInfo = {
+      "userLoc" :data.loc,
+      "userCity" : data.city,
+      "userReg" : data.region,
+      "userCn" : data.country,
+      "userTZ" : data.timezone,
+      "latLong" : data.loc.split(","),
+      "userEmail":""
+      }
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
       //json formatted ip,city,region,country,timezone,loc++
-    },
+    }
   });
 
    //incase we have a returning user that wants to browse all products
    //on products page
-  //all packages button appends all packages to sales
-  $("#welcome-back-title").html("Welcome Back!");
-  $("#message").html("Choose from any of our awesome packages below");
-  $("#sales-packs").append(waterPackageA);
-  $("#sales-packs").append(waterPackageB);
-  $("#sales-packs").append(waterPackageC);
-  $("#sales-packs").append(skiPackageA);
-  $("#sales-packs").append(skiPackageB);
-  $("#sales-packs").append(skiPackageC);
-  $("#sales-packs").append(landPackageA);
-  $("#sales-packs").append(landPackageB);
-  $("#sales-packs").append(landPackageC);
+   $("#welcome-back-title").html("Welcome Back!");
+   $("#message").html("Choose from any of our awesome packages below");
+   $("#sales-packs").append(waterPackageA);
+   $("#sales-packs").append(waterPackageB);
+   $("#sales-packs").append(waterPackageC);
+   $("#sales-packs").append(skiPackageA);
+   $("#sales-packs").append(skiPackageB);
+   $("#sales-packs").append(skiPackageC);
+   $("#sales-packs").append(landPackageA);
+   $("#sales-packs").append(landPackageB);
+   $("#sales-packs").append(landPackageC);
 
   //beginning of my questions
   var questionNumber = 0;
@@ -149,8 +151,9 @@ $(document).ready(function () {
           });
           //a variable to make sure there was an available package based on the user selection
           var appended = false;
+          //a for loop to check the array of strings for combinations matching packages
+          //packages with 1 item
           for (var i = 0; i < q4ans.length; i++) {
-            console.log("loop start " + i);
             if (q4ans[i] == "Kayak") {
               $("#sales-jumbotron").append(waterPackageA);
               appended = true;
@@ -162,7 +165,7 @@ $(document).ready(function () {
               appended = true;
             }
             if (i > 0) {
-              console.log("checking B's");
+              //this checks the packages with two items
               if (q4ans[i] == "Booties" && q4ans[i - 1] == "PFD") {
                 $("#sales-jumbotron").append(waterPackageB);
                 appended = true;
@@ -175,7 +178,7 @@ $(document).ready(function () {
               }
             }
             if (i > 1) {
-              console.log("checking C's");
+              //this checks the packages with three items
               if (q4ans[i] == "Booties" && q4ans[i - 1] == "PFD" && q4ans[i - 2] == "Kayak") {
                 $("#sales-jumbotron").append(waterPackageC);
                 appended = true;
@@ -190,8 +193,9 @@ $(document).ready(function () {
           }
           //backup in case the user selected options that didn't lead to a package
           if (!appended) {
-            $("#sales-jumbotron").append("Whoops! Seems like none of our available packages met your criteria. We hope you'll check out our full list of packages <a id='all-packages'><u>here</u></a>");
+            $("#sales-jumbotron").append("Whoops! Seems like none of our available packages met your criteria. We hope you'll check out our full list of packages <a href='packages.html'><u>here</u></a>");
           }
+          //questions complete. Show the sales packages
           $("#questions-jumbotron").hide()
           $("#sales-jumbotron").show()
           break;
@@ -212,8 +216,9 @@ $(document).ready(function () {
 
         case 2:
           questionNumber++;
-          userCity = $("input#userCity").val();
-          userReg = $("input#userRegion").val();
+          userInfo['userCity'] = $("input#userCity").val();
+          userInfo['userReg']  = $("input#userRegion").val();
+          localStorage.setItem('userInfo', userInfo);
           htmlFiller(numQs);
           break;
 
@@ -312,14 +317,14 @@ $(document).ready(function () {
     }
   });
 
-  //function  to populate html formatted questions and answers
+  //function to populate html formatted questions and answers
   function htmlFiller(numQs) {
     if (numQs == 4) {
       switch (questionNumber) {
         case 1:
           $("#question-head").html("Question 1");
           $("#current-question").html(
-            "Confirm your location: " + userCity + ", " + userReg
+            "Confirm your location: " + userInfo['userCity'] + ", " + userInfo['userReg']
           );
           $("#possible-answers").html(
             " <div class='form-check'><label class='form-check-label'><input type='radio' class='form-check-input' name='optionsRadios' id='yes' value='Yes'>Yes</label></div><div class='form-check'><label class='form-check-label'><input type='radio' class='form-check-input' name='optionsRadios' id='no' value='No'>No</label></div><br><a id='q-next' class='btn btn-primary btn-lg' role='button' style='margin: 10px 30px; color:#FFFFFF'>Next</a><br>"
@@ -400,7 +405,7 @@ $(document).ready(function () {
         case 1:
           $("#question-head").html("Question 1");
           $("#current-question").html(
-            "Confirm your location: " + userCity + ", " + userReg
+            "Confirm your location: " + userInfo['userCity'] + ", " + userInfo['userReg']
           );
           $("#possible-answers").html(
             " <div class='form-check'><label class='form-check-label'><input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios1' value='option1'></label></div><div class='form-check'><label class='form-check-label'><input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios2' value='Yes'></label></div><br><a id='q-next' class='btn btn-primary btn-lg' role='button' style='margin: 10px 30px; color:#FFFFFF'>Next</a><br>"
@@ -475,80 +480,7 @@ $(document).ready(function () {
           break;
       }
     }
-  }
-  //legacy
-  function onWater(lat, long) {
-    // Gets the image from the API call
-    var apiCall =
-      "https://maps.googleapis.com/maps/api/staticmap?center=" +
-      lat +
-      "," +
-      long +
-      "&zoom=11&size=400x400&maptype=roadmap&key=AIzaSyDidt8ZdVqW8g5_uYu6wC9D8jPWi-2-v8Y";
-    // alert(apiCall);
-
-    // Set image source as constructed API call string
-    var img = new Image();
-    img.crossOrigin = "anonymous"; // To fix the security issue of reading images from other sources
-    var src = apiCall;
-
-    // Sets up the canvas
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-
-    // Fill in the backgorund color with red so we can see it
-    ctx.fillStyle = "#FF0000";
-    ctx.fillRect(0, 0, 10, 10);
-
-    // // Download the image
-    img.onload = function () {
-      // ...then set the onload handler...
-      ctx.drawImage(img, 0, 0);
-      let x = 0;
-      let y = 0;
-      while (x < 399) {
-        // Get color of image
-        while (y < 399) {
-          var imgData = ctx.getImageData(x, y, 1, 1);
-          var red = imgData.data[0];
-          var green = imgData.data[1];
-          var blue = imgData.data[2];
-          var alpha = imgData.data[3];
-
-          // Hides the canvas as we are not interested in seeing it
-          canvas.style.display = "none";
-
-          /*console.log(
-                  "red: " +
-                    red +
-                    " green: " +
-                    green +
-                    " blue: " +
-                    blue +
-                    " alpha: " +
-                    alpha
-                );*/
-
-          // Determine if this response is WATER or NOT WATER
-          if (red == 170 && green == 218 && blue == 254) {
-            console.log("water found");
-
-            return;
-          } else {
-            y++;
-          }
-        }
-        x++;
-        y = 0;
-      }
-    };
-    img.src = src; // because the internet says you should put your src after your load
-  }
-  //legacy
-  function upHigh() {
-    console.log("Not yet Supported");
-  }
-  
+  }  
 
   //when the user is ready to purchase a package
   $(document).on("click", ".add-to-cart", function () {
