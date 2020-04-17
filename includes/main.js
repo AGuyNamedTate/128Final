@@ -267,8 +267,9 @@ $(document).ready(function () {
           });
           //a variable to make sure there was an available package based on the user selection
           var appended = false;
+          //a for loop to check the array of strings for combinations matching packages
+          //packages with 1 item
           for (var i = 0; i < q4ans.length; i++) {
-            console.log("loop start " + i);
             if (q4ans[i] == "Kayak") {
               $("#sales-jumbotron").append(waterPackageA);
               appended = true;
@@ -280,7 +281,7 @@ $(document).ready(function () {
               appended = true;
             }
             if (i > 0) {
-              console.log("checking B's");
+              //this checks the packages with two items
               if (q4ans[i] == "Booties" && q4ans[i - 1] == "PFD") {
                 $("#sales-jumbotron").append(waterPackageB);
                 appended = true;
@@ -293,7 +294,7 @@ $(document).ready(function () {
               }
             }
             if (i > 1) {
-              console.log("checking C's");
+              //this checks the packages with three items
               if (q4ans[i] == "Booties" && q4ans[i - 1] == "PFD" && q4ans[i - 2] == "Kayak") {
                 $("#sales-jumbotron").append(waterPackageC);
                 appended = true;
@@ -310,6 +311,7 @@ $(document).ready(function () {
           if (!appended) {
             $("#sales-jumbotron").append("Whoops! Seems like none of our available packages met your criteria. We hope you'll check out our full list of packages <a href='packages.html'><u>here</u></a>");
           }
+          //questions complete. Show the sales packages
           $("#questions-jumbotron").hide()
           $("#sales-jumbotron").show()
           break;
@@ -440,6 +442,13 @@ $(document).ready(function () {
         case 5:
           $("#current-question").html("What gear are you missing?");
           switch (packageOption) {
+            case 0:
+              $("#current-question").html("You don't seem to be interested in our gear. Just in case, take a look and check off any items you might be interested in");
+              $("#possible-answers").html("");
+              $("#possible-answers").append(hikeInterest);
+              $("#possible-answers").append(waterInterest);
+              $("#possible-answers").append(skiInterest);
+              break;
             case 3:
               $("#possible-answers").html("");
               $("#possible-answers").append(hikeInterest);
@@ -475,8 +484,8 @@ $(document).ready(function () {
               break;
           }
           $("#possible-answers").append("<a id='q-next' class='btn btn-primary btn-lg' role='button' style='margin: 10px 30px; color:#FFFFFF'>Next</a><br><br></br>");
-          $("#ques-prog-bar").attr("aria-valuenow", "80");
-          $("#ques-prog-bar").css("width", "80%");
+          $("#ques-prog-bar").attr("aria-valuenow", "75");
+          $("#ques-prog-bar").css("width", "75%");
           break;
       }
     }
