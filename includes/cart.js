@@ -2,8 +2,7 @@ $(document).ready(function () {
     //hide our widgets until the sale is complete
     $("#widgets").hide();
 
-    //hide the timer in case it isnt running
-
+    //hide the timer in case it ended 
     $(".alert").hide();
 
     //appends our stored package as a cart item
@@ -13,11 +12,15 @@ $(document).ready(function () {
     var userInfo = localStorage.getItem("userInfo");
     userInfo = JSON.parse(userInfo);
 
+
+
+
     //an api call to get a map so the user knows where they can take their gear
     $.ajax({
         type: "GET",
         url: "https://maps.googleapis.com/maps/api/staticmap?center=" + userInfo['userCity'] + "," + userInfo['userReg'] + "&zoom=11&size=400x400&maptype=roadmap&key=AIzaSyDidt8ZdVqW8g5_uYu6wC9D8jPWi-2-v8Y",
         success: function () {
+            //I havent found a way to convert data into an image so i just  call it again
             $("#map").attr('src', "https://maps.googleapis.com/maps/api/staticmap?center=" + userInfo['userCity'] + "," + userInfo['userReg'] + "&zoom=11&size=400x400&maptype=roadmap&key=AIzaSyDidt8ZdVqW8g5_uYu6wC9D8jPWi-2-v8Y");
         }
     });
@@ -25,11 +28,11 @@ $(document).ready(function () {
     //an api call to get an image from the users town/city
     $.ajax({
         type: "GET",
-        url: "https://pixabay.com/api/?key=16084763-8e7912141d31248b5b37dd3e9&q=" + userInfo['userCity'] + "," + userInfo['userReg'] + "&image_type=photo",
+        url: "https://source.unsplash.com/featured/?{" + userInfo['userCity'] + "},{" + userInfo['userReg'] + "}",
         success: function (data) {
-            src = data['hits'][1]['largeImageURL'];
-            $("#home").attr('src', src);
-            $("#tags").append(data['hits'][1]['tags']);
+            //get an image and put it in our page (since we know one exists)
+            //same as above
+            $("#home").attr('src', "https://source.unsplash.com/featured/?{" + userInfo['userCity'] + "},{" + userInfo['userReg'] + "}");
         }
     });
 
