@@ -218,7 +218,7 @@ $(document).ready(function () {
           questionNumber++;
           userInfo['userCity'] = $("input#userCity").val();
           userInfo['userReg']  = $("input#userRegion").val();
-          localStorage.setItem('userInfo', userInfo);
+          localStorage.setItem("userInfo", JSON.stringify(userInfo));
           htmlFiller(numQs);
           break;
 
