@@ -308,7 +308,7 @@ $(document).ready(function () {
           }
           //backup in case the user selected options that didn't lead to a package
           if (!appended) {
-            $("#sales-jumbotron").append("Whoops! Seems like none of our available packages met your criteria. We hope you'll check out our full list of packages <a id='all-packages'><u>here</u></a>");
+            $("#sales-jumbotron").append("Whoops! Seems like none of our available packages met your criteria. We hope you'll check out our full list of packages <a href='packages.html'><u>here</u></a>");
           }
           $("#questions-jumbotron").hide()
           $("#sales-jumbotron").show()
